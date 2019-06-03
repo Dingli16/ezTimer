@@ -1,9 +1,6 @@
-#include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <string.h>
 #include "ezTimer.h"
-
 
 void my_timer_task(void *param) //周期性打印自增数字
 {

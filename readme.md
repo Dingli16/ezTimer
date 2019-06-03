@@ -7,7 +7,7 @@
 - 接口简单
 
 ## 示例
-'''c
+```c
 #include <stdio.h>
 #include <unistd.h>
 #include "ezTimer.h"
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-'''
+```
 
 ## ToDo
 - 实现结束循环任务接口

@@ -20,20 +20,48 @@ void my_timer_task(void *param) //周期性打印自增数字
 
 int main(int argc, char *argv[])
 {
-    int ret;
+    ez_task *ezt;
 
-    //创建定时任务
-    ret = timer_task_create(my_timer_task, NULL, 1000, EZ_TIMER_MODE_LOOP);
+    ezt = timer_task_create(my_timer_task, NULL, 1000, EZ_TIMER_MODE_LOOP);
+    if(NULL == ezt)
+    {
+        printf("create timer task fail.\n");
+        return -1;
+    }
 
     while(1)
     {
-        sleep(2);
+        // 20s 后取消定时任务,如果需要一直运行下去，无需停止
+        sleep(20);
+        timer_task_stop(ezt);
+        printf("timer task is stop.\n");
+        break;
     }
 
     return 0;
 }
 ```
+Output:
+```shell
+my_timer_task: grow = 0
+my_timer_task: grow = 1
+my_timer_task: grow = 2
+my_timer_task: grow = 3
+my_timer_task: grow = 4
+my_timer_task: grow = 5
+my_timer_task: grow = 6
+my_timer_task: grow = 7
+my_timer_task: grow = 8
+my_timer_task: grow = 9
+my_timer_task: grow = 10
+my_timer_task: grow = 11
+my_timer_task: grow = 12
+my_timer_task: grow = 13
+my_timer_task: grow = 14
+my_timer_task: grow = 15
+timer task is stop.
+```
 
 ## ToDo
-- 实现结束循环任务接口
+- 实现结束循环任务接口 --done
 

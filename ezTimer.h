@@ -1,5 +1,6 @@
 #ifndef __eztimer_h__
 #define __eztimer_h__
+#include <pthread.h>
 
 typedef void(*task_callback)(void *);
 
@@ -15,6 +16,10 @@ typedef struct{
     ez_timer_mode mode;
 }task_action;
 
-int timer_task_create(task_callback cb, void *param, unsigned int tick, ez_timer_mode mode);
+typedef struct{
+    pthread_t tid;
+}ez_task;
 
+ez_task* timer_task_create(task_callback cb, void *param, unsigned int tick, ez_timer_mode mode);
+int timer_task_stop(ez_task *ezs);
 #endif // __eztimer_h__

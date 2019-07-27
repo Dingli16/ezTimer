@@ -63,5 +63,5 @@ timer task is stop.
 ```
 
 ## ToDo
-- 实现结束循环任务接口 --done
+- [x] 实现结束循环任务接口
 

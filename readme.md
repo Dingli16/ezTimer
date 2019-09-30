@@ -62,6 +62,3 @@ my_timer_task: grow = 15
 timer task is stop.
 ```
 
-## ToDo
-- [x] 实现结束循环任务接口
-
